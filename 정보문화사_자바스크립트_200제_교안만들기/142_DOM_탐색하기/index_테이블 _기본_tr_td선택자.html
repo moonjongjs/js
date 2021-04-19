@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>142_DOM_탐색하기</title>
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;}
+        html,body{width:100%;height:100%;}
+        h1 {text-align: center;font-size: 30px;padding: 30px 0;}
+        ol {margin:0 auto;width:300px;padding: 30px 0;}
+        ol,li {
+            font-size:20px;
+        }
+        table {border-collapse: collapse;margin:0 auto;}
+        td { width:70px;height:70px;text-align:center;vertical-align: middle;border:1px solid #ccc;font-size:20px;}
+        
+    </style>
+</head>
+<body>
+
+    <h1>국내여행지</h1>
+    <ol id="orderList">
+        <li>List item1</li>
+        <li>List item2</li>
+        <li>List item3</li>
+        <li>List item4</li>
+        <li>List item5</li>
+    </ol>
+    <table id="tableList">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+
+
+    <table id="arrary1">
+
+    </table>
+    <table id="arrary2">
+
+    </table>
+    <table id="arrary3">
+
+    </table>
+
+    <div id="output"></div>
+
+    <script>
+        
+        const win           = window;
+        const doc           = document;
+        const bodyEl        = document.body;
+        const bodyChildren  = document.body.children; //객체 배열
+
+        const h1            = document.getElementsByTagName('h1');
+        const orderList     = document.getElementById('orderList');
+        const table         = document.getElementById('tableList');
+        let   tr            = document.querySelectorAll('#tableList tr');
+                    
+                console.log( 'win', win ) ;
+                console.log( 'doc', doc ) ;
+                console.log( 'bodyEl', bodyEl ) ;
+                console.log( 'bodyChildren', bodyChildren ) ;
+                console.log( 'bodyChildren[4]', bodyChildren[4] ) ;
+                for(var i=0; i<bodyChildren.length; i++){
+                    console.log( 'bodyChildren['+ i +']', bodyChildren[i] ) ;
+                }
+
+                console.log( 'h1', h1[0] ) ;
+
+                console.log( 'bodyEl.children[0]', bodyEl.children[0] ) ; 
+                console.log( 'orderList', orderList ) ; 
+                console.log( 'orderList.children', orderList.children ) ; 
+
+                console.log( 'orderList.children  ', orderList.children.length ) ; 
+                for(var i=0; i<orderList.children.length; i++){
+                    console.log( 'orderList.children['+ i +']', orderList.children[i].innerHTML ) ;
+                }
+                console.log( 'orderList.children[0].textContent ', orderList.children[0].textContent ) ; 
+                console.log( 'orderList.children[0].innerText ', orderList.children[0].innerText ) ; 
+
+                for(var i=0; i<orderList.children.length; i++){
+                    console.log( 'orderList.children.item(' + i + ').innerHTML ', orderList.children.item(i).innerHTML ) ;
+                }
+
+                console.log( 'orderList.children.item(0).textContent ', orderList.children.item(0).textContent ) ; 
+                console.log( 'orderList.children.item(0).innerText ', orderList.children.item(1).innerText ) ; 
+                
+                console.log( 'orderList.children.item(2).nextElementSibling ', orderList.children.item(2).nextElementSibling ) ; 
+                console.log( 'orderList.children.item(2).nextSibling ', orderList.children.item(2).nextElementSibling.textContent ) ; 
+    
+                console.log( 'orderList.children.item(2).previousElementSibling ', orderList.children.item(2).previousElementSibling ) ; 
+                console.log( 'orderList.children.item(2).previousSibling ', orderList.children.item(2).previousElementSibling.textContent ) ; 
+    
+                console.log( 'orderList.children.item(2).previousSibling ', orderList.children.item(2).previousSibling ) ; //강제개행
+                console.log( 'orderList.children.item(2).previousSibling.textContent ', orderList.children.item(2).previousSibling.textContent ) ; //강제개행 빈줄
+                console.log( 'orderList.children.item(2).previousSibling.previousSibling.textContent ', orderList.children.item(2).previousSibling.previousSibling.textContent ) ; //빈줄 바로 이전
+                
+                
+                console.log( 'orderList.childNodes ', orderList.childNodes ) ;
+                console.log( 'orderList.children.item(1).innerHTML', orderList.children.item(1).innerHTML ) ;
+                console.log( 'orderList.children.item(2).innerText  ', orderList.children.item(2).innerText ) ;
+                console.log( 'orderList.children.item(3).textContent ', orderList.children.item(3).textContent ) ;
+                console.log( 'orderList.children.item(3).parentElement ', orderList.children.item(3).parentElement ) ;
+
+                
+                // TABLE
+                // console.log( 'tr[0].children ', tr[0].children[0] ) ; 
+                // console.log( 'tr[0].children ', tr[0].children[1] ) ; 
+                // console.log( 'tr[0].children ', tr[0].children[2] ) ; 
+                // console.log( 'tr[0].children ', tr[0].children[3] ) ; 
+                // console.log( 'tr[0].children ', tr[0].children[4] ) ; 
+
+                // console.log( 'tr[1].children[0]  ', tr[1].children[0] ) ; 
+                // console.log( 'tr[1].children[1]  ', tr[1].children[1] ) ; 
+                // console.log( 'tr[1].children[2]  ', tr[1].children[2] ) ; 
+                // console.log( 'tr[1].children[3]  ', tr[1].children[3] ) ; 
+                // console.log( 'tr[1].children[4]  ', tr[1].children[4] ) ; 
+
+
+                tr.forEach(function(el, idx){
+                    console.log( idx, el);              
+                    console.log( 'tr['+idx+'].children.length ',  tr[idx].children.length );
+                    for(var i=0; i<tr[idx].children.length; i++){
+                        console.log( 'tr['+idx+'].children ',  tr[idx].children[i] );
+                    }
+                    console.log( 'tr['+idx+'].children ',  tr[idx].children[1] );
+                    console.log( 'tr['+idx+'].children ',  tr[idx].children[2] );
+                    console.log( 'tr['+idx+'].children ',  tr[idx].children[3] );
+                    console.log( 'tr['+idx+'].children ',  tr[idx].children[4] );
+
+                })
+                    var k = 0;
+                    for(var i=0; i<tr.length; i++){
+                        for(var j=0; j<tr[i].children.length; j++){
+                            k++;
+                            console.log( 'tr['+i+'].children['+j+']  ',  tr[i].children[j].innerText = k );
+                        }
+                    }
+
+
+       
+
+
+    </script>
+
+</body>
+</html>
+
+

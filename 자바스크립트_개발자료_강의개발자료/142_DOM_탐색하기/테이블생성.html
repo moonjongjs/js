@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>142_DOM_탐색하기</title>
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;}
+        html,body{width:100%;height:100%;}
+        section {padding:100px 0;}
+        h1 {text-align: center;font-size: 30px;padding: 30px 0;}
+        table {border-collapse: collapse;margin:0 auto;}
+        td { width:70px;height:70px;text-align:center;vertical-align: middle;border:1px solid #ccc;font-size:20px;}
+        
+    </style>
+</head>
+<body>
+
+    
+    <section id="section1">
+        <h1>5행 5열 : 행열 1</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section2">
+        <h1>5행 5열 : 행열 2</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section3">
+        <h1>5행 5열 : 행열 3</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section4">
+        <h1>5행 5열 : 행열 4</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section5">
+        <h1>5행 5열 : 행열 5</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+       
+    <script>
+        (function(){
+            var arr = {
+                    init(){
+                        this.section1();
+                        this.section2();
+                        this.section3();
+                        this.section4();
+                        this.section5();
+                    },
+                    section1(){
+
+                        // table 생성
+                        const tableWrap = document.querySelector('#section1 .table-wrap');
+                        let   tableEl = document.createElement('table');
+                              tableEl.className = 'table';
+                              tableWrap.appendChild(tableEl);
+
+                        // tr 생성
+                        let   table_1 = document.querySelector('#section1 .table');
+                                for(var i=0; i<=4; i++){
+                                    let trEl = document.createElement('tr');                            
+                                        table_1.appendChild(trEl);
+                                }
+                        // td 생성        
+                        let   row = document.querySelectorAll('#section1 .table tr');
+                              console.log(row);
+                                for(var i=0; i<=4; i++){
+                                    for(var j=0; j<=4; j++){
+                                        let tdEl = document.createElement('td');
+                                            row[i].appendChild(tdEl);
+                                    }  
+                                }
+
+
+                    },
+                    section2(){
+
+                        // table 생성
+                        const tableWrap = document.querySelector('#section2 .table-wrap');
+                        let   tableEl = document.createElement('table');
+                              tableEl.className = 'table';
+                              tableWrap.appendChild(tableEl);
+
+                        // tr 생성
+                        let   table_1 = document.querySelector('#section2 .table');
+                                for(var i=0; i<=4; i++){
+                                    let trEl = document.createElement('tr');                            
+                                        table_1.appendChild(trEl);
+                                }
+                                
+                        // td 생성        
+                        let   row = document.querySelectorAll('#section2 .table tr');
+                              console.log(row);
+                                for(var i=0; i<=4; i++){
+                                    for(var j=0; j<=4; j++){
+                                        let tdEl = document.createElement('td');
+                                            row[i].appendChild(tdEl);
+                                    }  
+                                }
+
+                    },
+                    section3(){
+
+                        // table 생성
+                        const tableWrap = document.querySelector('#section3 .table-wrap');
+                        let   tableEl = document.createElement('table');
+                              tableEl.className = 'table';
+                              tableWrap.appendChild(tableEl);
+
+                        // tr 생성
+                        let   table_1 = document.querySelector('#section3 .table');
+                                for(var i=0; i<=4; i++){
+                                    let trEl = document.createElement('tr');                            
+                                        table_1.appendChild(trEl);
+                                }
+                                
+                        // td 생성        
+                        let   row = document.querySelectorAll('#section3 .table tr');
+                              console.log(row);
+                                for(var i=0; i<=4; i++){
+                                    for(var j=0; j<=4; j++){
+                                        let tdEl = document.createElement('td');
+                                            row[i].appendChild(tdEl);
+                                    }  
+                                }
+
+                    },
+                    section4(){
+
+                    },
+                    section5(){
+
+                    }
+            }
+
+            arr.init();
+
+        })();
+    </script>
+
+</body>
+</html>
+
+

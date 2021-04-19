@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알림바 만들기 스타일 제어하기</title>
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;}
+        html,body{width:100%;height:100%;transition:all 1s;}
+        .notice-bar {
+            text-align:center;
+            line-height: 100px;
+            border:1px solid black;
+            background:burlywood;
+            width:100%;
+            height:100px;
+            position:absolute;
+            transition:all 1s;
+        }
+    </style>
+</head>
+<body>
+    
+<script>
+  class NotificationBar {
+        constructor() {
+            this.barEl = document.createElement('div');
+            this.barEl.style.display = "block";
+            this.barEl.classList.add("notice-bar")
+            document.body.appendChild(this.barEl);
+        }
+        show(message, position = 'top'){
+
+            if(position=='top'){
+                this.barEl.style.top=0;
+                this.barEl.style.bottom='';
+            }
+            if(position=='bottom'){
+                this.barEl.style.top='';
+                this.barEl.style.bottom=0;
+            }
+            this.barEl.style.left=0;
+            this.barEl.style.right=0;
+            this.barEl.style.display='';
+            this.barEl.innerHTML = message;
+        }
+    }
+
+    const notice = new NotificationBar();  
+    setTimeout(() => {
+        notice.show('Welcome to Javascript 200');
+    }, 1000);
+    
+    setTimeout(() => {
+        notice.show('Welcome to Javascript 200','bottom');
+    }, 2000);
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>142_DOM_탐색하기</title>
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;}
+        html,body{width:100%;height:100%;}
+        section {padding:100px 0;}
+        h1 {text-align: center;font-size: 30px;padding: 30px 0;}
+        table {border-collapse: collapse;margin:0 auto;}
+        td { width:70px;height:70px;text-align:center;vertical-align: middle;border:1px solid #ccc;font-size:20px;}
+        
+    </style>
+</head>
+<body>
+
+    
+    <section id="section1">
+        <h1>5행 5열 : 행열 1</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section2">
+        <h1>5행 5열 : 행열 2</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section3">
+        <h1>5행 5열 : 행열 3</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section4">
+        <h1>5행 5열 : 행열 4</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section5">
+        <h1>5행 5열 : 행열 5</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section6">
+        <h1>5행 5열 : 행열 6</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+    <section id="section7">
+        <h1>5행 5열 : 행열 7</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+       
+    <section id="section8">
+        <h1>5행 5열 : 행열 8</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+       
+    <section id="section9">
+        <h1>5행 5열 : 행열 9</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+       
+    <section id="section10">
+        <h1>5행 5열 : 행열 10</h1>
+        <div class="table-wrap">
+
+        </div>
+    </section>
+       
+    <script>
+        class Arr {
+
+            constructor(a,b) {
+                this.n = a;
+                this.m = b;
+            } 
+            createTableFn(){
+                console.log(this.n, this.m);
+                //테이블 table 생성 5개
+                for(var i=0; i<this.n; i++){ //테이블 table 생성 5개
+                    var tableBox = document.querySelector('#section'+(i+1)+' .table-wrap');
+                    var createTable = document.createElement('table');
+                        createTable.className = 'table';
+                        tableBox.appendChild(createTable);                         
+                }
+
+                // 각 테이블에 tr 생성 5개
+                for(var i=0; i<this.n; i++){ 
+                    var table = document.querySelector('#section' +(i+1)+ ' .table');
+                    for(var j=0; j<this.m; j++){ // 각 테이블에 tr 생성 5개
+                        var createTr = document.createElement('tr');
+                            table.appendChild(createTr);
+                    }
+                }
+
+                // 각 테이블에 td 생성 5개
+                for(var i=0; i<this.n; i++){ 
+                    var tr = document.querySelectorAll('#section' +(i+1)+ ' .table tr');
+                    for(var j=0; j<this.m; j++){ // 각 테이블에 td 생성 5개
+                        for(var k=0; k<this.m; k++){ // 각 테이블에 td 생성 5개
+                            var createTd = document.createElement('td');
+                                tr[j].appendChild(createTd);
+                        }
+                    }
+                }
+
+            }
+            section1(){
+                var k=0;
+                var table = document.querySelector('#section1 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=0; j<5; j++){
+                            k++;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section2(){
+                var k=26;
+                var table = document.querySelector('#section2 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=0; j<5; j++){
+                            k--;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section3(){
+                var k=0;
+                var table = document.querySelector('#section3 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=i; j<5; j++){
+                            k++;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section4(){
+                var k=0;
+                var table = document.querySelector('#section4 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=0; j<=i; j++){
+                            k++;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section5(){
+                var k=0;
+                var table = document.querySelector('#section5 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=0; j<5-i; j++){
+                            k++;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section6(){
+                var k=0;
+                var table = document.querySelector('#section6 .table')
+                    for(var i=0; i<5; i++){                                
+                        for(var j=4-i; j<5; j++){
+                            k++;
+                            table.children[i].children[j].textContent=k;
+                        }
+                    }
+            }
+            section7(){
+                var k=0;
+                var table = document.querySelector('#section7 .table')
+                    for(var i=0; i<5; i++){ 
+                        if(i<=2){
+                            for(var j=i; j<5-i; j++){ //0~4/1~3/2~2
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            }
+                        }
+                        else{                               
+                            for(var j=4-i; j<=i; j++){ //1 ~ 3 /0 ~ 4
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            }
+                        }
+                    }
+            }
+            section8(){
+                var k=0;
+                var table = document.querySelector('#section8 .table')
+                    //0 : 2~2
+                    //1 : 1~3
+                    //2 : 0~4
+                    //3 : 1~3
+                    //4 : 2~2
+                    for(var i=0; i<5; i++){
+                        if( i<=2 ){
+                            for(var j=2-i; j<=2+i; j++){ //5개인경우 : 2-0=2, 2+0=2
+                            // for(var j=3-i; j<=3+i; j++){ //7개인경우 : 3-0=3, 3+0=3
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            }
+                        }
+                        else{
+                            for(var j=i-2; j<=6-i; j++){ //5개인경우 : 3-2=1, (칸수+1)6-3=3
+                            // for(var j=i-3; j<=8-i; j++){ //7개인경우 : 4-3=1, (칸수+1)8-3=5
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            }
+                        }  
+                        
+                    }
+
+            }
+            section9(){  // ㄹ 모양
+
+                var k=0;
+                var table = document.querySelector('#section9 .table')
+                var s = 0;
+                var e = 4;
+
+                    for(var i=0; i<5; i++){
+                        if( i%2==0 ){
+                            for(var j=0; j<5; j++){ 
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            } 
+                        }
+                        else{
+                            for(var j=4; j>=0; j--){ 
+                                k++;
+                                table.children[i].children[j].textContent=k;
+                            } 
+                        }   
+                            
+                    }
+
+            }
+            section10(){
+                
+            }                    
+        }
+
+        class TableArr extends Arr {
+                init(){
+                    super.createTableFn();
+                    super.section1();
+                    super.section2();
+                    super.section3();
+                    super.section4();
+                    super.section5();
+                    super.section6();
+                    super.section7();
+                    super.section8();
+                    super.section9();
+                    super.section10();
+                }
+        }
+        
+        const createTableElment = new TableArr(10,9);
+              createTableElment.init();
+
+
+    </script>
+
+</body>
+</html>
+
+

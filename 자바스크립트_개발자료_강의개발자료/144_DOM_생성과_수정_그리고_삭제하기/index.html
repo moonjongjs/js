@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>144_DOM_생성과_수정_그리고_삭제하기</title>
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;}
+        html,body{width:100%;height:100%;}
+        ul,li {
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>상품목록</h2>
+    <ul id="product-list">
+
+    </ul>
+
+    <script>
+        const procucts = [
+            { id: 'P-01', name: '상품1' },
+            { id: 'P-02', name: '상품2' },
+            { id: 'P-03', name: '상품3' }
+        ];
+
+        const  productListEl = document.querySelector('#product-list');
+        
+        procucts
+            .map(function(product){
+                const newEl = document.createElement('li');
+                      newEl.id = product.id;
+                      newEl.innerHTML = product.name;
+                      return newEl;
+            })
+            .forEach(function(el,idx){ 
+                productListEl.appendChild(el);
+                console.log(idx, el);
+            })
+
+    </script>
+
+</body>
+</html>
