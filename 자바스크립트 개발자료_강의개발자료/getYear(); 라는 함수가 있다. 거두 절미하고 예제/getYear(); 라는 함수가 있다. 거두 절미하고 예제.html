@@ -1,0 +1,21 @@
+getYear(); 라는 함수가 있다. 거두 절미하고 예제부터 보자
+
+<script type="text/javascript">
+var now = new Date();
+var yy = now.getYear();
+var y = now.getFullYear();
+ 
+alert( "getYear : "+ yy + "\ngetFullYear : "+ y );
+</script>
+
+위의 예제를 크롬이나 파이어 폭스에서 실행한다면
+
+getYear : 112
+getFullYear : 2012
+처럼 나오게 된다.
+getYear()로 뽑아낸 값은 +1900을 해야 원래대로 표시되는것이다.
+
+원래 getYear()라는 함수는 1900~1999 까지를 표시하기 위해서 2자리만을 반환해주는 함수라고 한다. 하지만 IE에선 잘 나오기에.... ㅡ/.ㅡ
+참고 : https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getYear
+
+무튼 웹표준화를 위해서 getFullYear()를 쓰기를 추천한다.

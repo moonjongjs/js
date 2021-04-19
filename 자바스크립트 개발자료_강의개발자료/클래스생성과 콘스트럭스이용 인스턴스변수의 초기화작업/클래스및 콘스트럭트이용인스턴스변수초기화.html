@@ -1,0 +1,30 @@
+class Cat {
+    constructor(name,url) {
+        this.irum = name;
+        this.link = url;
+    }
+    speak() {
+        console.log(`${this.irum} makes a noise.`);
+    }
+    
+    noise() {
+        console.log(`${this.link} spuer call noise.`);
+    }
+
+}
+
+class Lion extends Cat {
+    init() {
+        super.speak();
+        super.noise();
+        // super.noise();
+        // console.log(`${this.irum} roars.`);
+        // console.log(`${this.link} url Link Address`);
+        // location.href = 'http://' + this.link;
+    }
+}
+
+let l = new Lion('Fuzzy','tjoeun.co.kr');
+    l.init();
+    // Fuzzy makes a noise.
+    // Fuzzy roars.

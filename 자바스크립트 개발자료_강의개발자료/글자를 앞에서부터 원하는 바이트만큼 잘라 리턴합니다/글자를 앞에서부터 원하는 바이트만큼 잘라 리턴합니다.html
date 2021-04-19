@@ -1,0 +1,42 @@
+상품명을 DB에 저장하는데 html의 input 태그는 한글과 영문 및 특수문자가 2byte로 처리되고 DB에는 한글 1byte로 처리되어서
+한글이 깨지는것을 방지하기 위해서 아래의 소스를 이용하여 원하는 크기만큼 짜르고 한글은 안깨지도록 하기 위함이다.
+
+출처 : 인터넷
+
+ 
+
+<script>
+/** 
+* string String::cut(int len)
+* 글자를 앞에서부터 원하는 바이트만큼 잘라 리턴합니다.
+* 한글의 경우 2바이트로 계산하며, 글자 중간에서 잘리지 않습니다.
+*/
+String.prototype.cut = function(len) {
+  var str = this;
+  var l = 0;
+  for (var i=0; i<str.length; i++) {
+    l += (str.charCodeAt(i) > 128) ? 2 : 1;
+    if (l > len) return str.substring(0,i) ;
+  }
+  return str;
+}
+
+
+/** 
+* bool String::bytes(void)
+* 해당스트링의 바이트단위 길이를 리턴합니다. (기존의 length 속성은 2바이트 문자를 한글자로 간주합니다)
+*/
+String.prototype.bytes = function() {
+  var str = this;
+  var l = 0;
+  for (var i=0; i<str.length; i++) l += (str.charCodeAt(i) > 128) ? 2 : 1;
+    return l;
+}
+
+
+aaa = "브랜드계육브랜드DHA통닭(10호)가";
+
+
+alert(aaa.cut(30));
+alert("length: " + aaa.length + "nbytes(): " + aaa.bytes());
+</script>

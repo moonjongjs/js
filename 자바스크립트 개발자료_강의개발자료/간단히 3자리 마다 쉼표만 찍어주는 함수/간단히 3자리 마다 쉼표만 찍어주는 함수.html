@@ -1,0 +1,16 @@
+
+<!-- 간단히 3자리 마다 쉼표만 찍어주는 함수 -->
+<script>
+    function number_format( number )
+    {
+      var nArr = String(number).split('').join(',').split('');
+      for( var i=nArr.length-1, j=1; i>=0; i--, j++)  if( j%6 != 0 && j%2 == 0) nArr[i] = '';
+      return nArr.join('');
+    }
+
+
+String.prototype.number_format = function() { return this.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); }; 
+alert( String("12345698765").number_format());
+
+
+</script>

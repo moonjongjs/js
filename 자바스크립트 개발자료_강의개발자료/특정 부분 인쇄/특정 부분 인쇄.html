@@ -1,0 +1,86 @@
+
+<!-- 
+<DIV> 태그를 잘 이용하면 특정 DIV 영역만 인쇄할 수가 있다. 이제부터 그 방법을 알아 보도록 하자.
+
+    인터넷 익스플로러는 window.onbeforeprint와 window.onafterprint 이벤트 핸들러를 지원하는데, 이들은 인쇄 전과 후의 웹 페이지 내용을 변경할 수 있도록 도와준다. 이 기능을 이용하여 특정 DIV 영역은 보이게 하고 나머지 영역은 숨길 수가 있다. (불행히 넷스케이프는 이 이벤트 핸들러를 지원하지 않는다. 하지만 여기서는 약간의 제약이 있긴 하지만 넷스케이프에서도 약간의 보이기 속성을 조절하여 비슷하게 구현해 보기로 한다.)
+    
+    실제 코드를 실펴 보도록 하자. -->
+
+<HTML>
+<HEAD>
+<STYLE>
+DIV { position: relative; }
+</STYLE>
+<SCRIPT>
+var div2print;
+ 
+ 
+function printDiv (id) {
+  if (document.all && window.print) {
+    div2print = document.all[id];
+    window.onbeforeprint = hideDivs;
+    window.onafterprint = showDivs;
+    window.print();
+  } else if (document.layers) {
+    div2print = document[id];
+    hideDivs();
+    //window.print();
+  }
+}
+ 
+function hideDivs () {
+  if (document.all) {
+    var divs = document.all.tags('DIV');
+    for (var d = 0; d < divs.length; d++)
+      if (divs[d] != div2print) {
+        divs[d].style.display = 'none';
+      }
+  } else if (document.layers) {
+    for (var l = 0; l < document.layers.length; l++)
+      if (document.layers[l] != div2print)
+        document.layers[l].visibility = 'hide';
+ 
+  }
+}
+ 
+ 
+function showDivs () {
+  var divs = document.all.tags('DIV');
+  for (var d = 0; d < divs.length; d++)
+    divs[d].style.display = 'block';
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+ 
+  
+ 
+<DIV>
+<FORM>
+<SELECT NAME="divSelect">
+<OPTION value="d1">첫 번째 영역만 인쇄
+<OPTION value="d2">두 번째 영역만 인쇄
+<OPTION value="d3">세 번째 영역만 인쇄
+</SELECT>
+<!-- <INPUT TYPE="button" ONCLICK="var s = this.form.divSelect; var divID = s.options[s.selectedIndex].text; printDiv(divID);"
+         VALUE="특정 부분 인쇄">-->
+<INPUT TYPE="button" ONCLICK="var s = this.form.divSelect; var divID = s.options[s.selectedIndex].value; printDiv(divID);"
+         VALUE="특정 부분 인쇄">
+</FORM>
+</DIV>
+<DIV ID="d1"><b>[첫 번째 영역]</b>
+첫 번째 영역입니다!
+ 
+</DIV>
+<DIV ID="d2"><b>[두 번째 영역]</b>
+두 번째 영역입니다!
+두 번째 영역을 선택하여 인쇄해 보세요!
+ 
+</DIV>
+<DIV ID="d3"><b>[세 번째 영역]</b>
+세 번째 영역입니다!
+세 번째 영역을 선택하여 인쇄해 보세요!
+From 코리아인터넷닷컴</DIV>
+</BODY>
+</HTML>
+

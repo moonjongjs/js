@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CheckBox</title>
+</head>
+
+<body>
+  <form>
+    <table>
+      <tr>
+        <td>
+          <input type="checkbox" name="hobbyAll">전체선택
+        </td>
+        <td>
+          <input type="checkbox" name="hobby" value="music">음악감상
+          <input type="checkbox" name="hobby" value="game">게임
+          <input type="checkbox" name="hobby" value="travel">여행
+          <input type="checkbox" name="hobby" value="soccer">축구
+          <input type="checkbox" name="hobby" value="reading">독서
+          <input type="checkbox" name="hobby" value="cooking">요리
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+
+        document.querySelector("input[name=hobbyAll]").addEventListener("change", function (e) {
+            e.preventDefault();
+            var list = document.querySelectorAll("input[name=hobby]");
+            for (var i = 0; i < list.length; i++) {
+                list[i].checked = this.checked;
+            }
+        });
+        
+  </script>
+
+
+</body>
+</html>

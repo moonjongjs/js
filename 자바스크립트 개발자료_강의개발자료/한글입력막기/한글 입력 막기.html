@@ -1,0 +1,23 @@
+    <!-- 한글 입력 막기 -->
+
+    style="ime-mode:Disabled;"
+
+    
+
+    <!-- 숫자만 입력 가능 -->
+
+    onkeypress="if(!(event.keyCode > 47 && event.keyCode < 58)) event.returnValue=false;"
+
+    
+
+    <!-- 한글만 입력 가능 -->
+
+    onkeypress="if(!(event.keyCode < 47 && event.keyCode > 58)) event.returnValue=false;"
+
+    
+
+<!-- 붙여 넣기 방지 -->
+
+<input type="text" onpaste="javascript:return false;">
+
+
